@@ -52,6 +52,7 @@ namespace ShopHope
             {
                 Point point = new Point(x, y);
                 backGroundPanal.Location = point;
+                //helllo i made a change
             }
         }
 
