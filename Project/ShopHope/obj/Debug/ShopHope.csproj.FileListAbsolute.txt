@@ -1,0 +1,9 @@
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\bin\Debug\ShopHope.exe.config
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.csprojResolveAssemblyReference.cache
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.Properties.Resources.resources
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.csproj.GenerateResource.Cache
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\bin\Debug\ShopHope.exe
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\bin\Debug\ShopHope.pdb
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.exe
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.pdb
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\ShopHope\obj\Debug\ShopHope.Manager.resources
