@@ -88,11 +88,11 @@
             this.submitBtn.Text = "Submit";
             this.submitBtn.UseVisualStyleBackColor = false;
             // 
-            // Manager
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ShopHope.Properties.Resources.download;
+            this.BackColor = System.Drawing.Color.Cyan;
             this.ClientSize = new System.Drawing.Size(1551, 712);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.label2);
@@ -100,7 +100,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.backGroundPanal);
-            this.Name = "Manager";
+            this.Name = "Login";
             this.Text = "LOGIN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);

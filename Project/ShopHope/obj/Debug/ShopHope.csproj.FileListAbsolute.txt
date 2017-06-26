@@ -17,3 +17,7 @@ C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\P
 C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\obj\Debug\ShopHope.Properties.Resources.resources
 C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\obj\Debug\ShopHope.csproj.GenerateResource.Cache
 C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\obj\Debug\ShopHope.Login.resources
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\bin\Debug\MySql.Data.dll
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\bin\Debug\MySql.Data.xml
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\obj\Debug\ShopHope.changeBtn.resources
+C:\Users\Tharsanan\Documents\Visual Studio 2015\Projects\ShopHope\git\ShopHope\Project\ShopHope\obj\Debug\ShopHope.SalesManForm.resources

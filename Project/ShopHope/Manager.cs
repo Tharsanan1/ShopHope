@@ -19,8 +19,8 @@ namespace ShopHope
 
         private void Manager_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("x "+e.X+"y "+e.Y);
-        }
+            MessageBox.Show("x " + e.X + "y " + e.Y);
+        }   
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -35,6 +35,11 @@ namespace ShopHope
         private void profilePanel_MouseClick(object sender, MouseEventArgs e)
         {
             MessageBox.Show("x " + e.X + "y " + e.Y);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Product(1,2,"a","b","c",2.3,3.4);
         }
     }
 }

@@ -27,6 +27,8 @@ namespace ShopHope
             timer.Start();
             count = 0;
             new Manager().Show();
+            new changeBtn().Show();
+            new SalesManForm().Show();
             
         }
 
