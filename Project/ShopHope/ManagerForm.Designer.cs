@@ -1,6 +1,6 @@
 ﻿namespace ShopHope
 {
-    partial class Manager
+    partial class ManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.profilePanel = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.notificationPanel = new System.Windows.Forms.Panel();
+            this.notificationCountLbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -55,7 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.viewStockPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.countNotificationLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.privatePanel.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -230,13 +231,26 @@
             // notificationPanel
             // 
             this.notificationPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.notificationPanel.Controls.Add(this.countNotificationLbl);
+            this.notificationPanel.Controls.Add(this.notificationCountLbl);
             this.notificationPanel.Controls.Add(this.label12);
             this.notificationPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notificationPanel.Location = new System.Drawing.Point(916, 0);
             this.notificationPanel.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.notificationPanel.Name = "notificationPanel";
-            this.notificationPanel.Size = new System.Drawing.Size(225, 60);
+            this.notificationPanel.Size = new System.Drawing.Size(225, 59);
             this.notificationPanel.TabIndex = 2;
+            this.notificationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.notificationPanel_Paint);
+            this.notificationPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notificationPanel_MouseClick);
+            // 
+            // notificationCountLbl
+            // 
+            this.notificationCountLbl.AutoSize = true;
+            this.notificationCountLbl.ForeColor = System.Drawing.Color.Red;
+            this.notificationCountLbl.Location = new System.Drawing.Point(182, 0);
+            this.notificationCountLbl.Name = "notificationCountLbl";
+            this.notificationCountLbl.Size = new System.Drawing.Size(0, 18);
+            this.notificationCountLbl.TabIndex = 9;
             // 
             // label12
             // 
@@ -249,6 +263,7 @@
             this.label12.Size = new System.Drawing.Size(107, 25);
             this.label12.TabIndex = 8;
             this.label12.Text = "Notification";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // panel2
             // 
@@ -384,29 +399,30 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "View Stocks";
             // 
-            // button1
+            // countNotificationLbl
             // 
-            this.button1.Location = new System.Drawing.Point(840, 353);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.countNotificationLbl.AutoSize = true;
+            this.countNotificationLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countNotificationLbl.ForeColor = System.Drawing.Color.Red;
+            this.countNotificationLbl.Location = new System.Drawing.Point(202, 0);
+            this.countNotificationLbl.Name = "countNotificationLbl";
+            this.countNotificationLbl.Size = new System.Drawing.Size(17, 18);
+            this.countNotificationLbl.TabIndex = 2;
+            this.countNotificationLbl.Text = "0";
             // 
-            // Manager
+            // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1615, 747);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.Name = "Manager";
+            this.Name = "ManagerForm";
             this.Text = "Manager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Manager_MouseClick);
             this.panel1.ResumeLayout(false);
             this.privatePanel.ResumeLayout(false);
@@ -467,6 +483,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel viewStockPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label notificationCountLbl;
+        private System.Windows.Forms.Label countNotificationLbl;
     }
 }

@@ -41,31 +41,36 @@
             this.weightComboBox = new System.Windows.Forms.ComboBox();
             this.nameComboBox = new System.Windows.Forms.ComboBox();
             this.brandComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             this.billDataGridView = new System.Windows.Forms.DataGridView();
-            this.numberOfStocksForPurchase = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.onePriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberOfStocksForPurchase = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.returnPanel = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.returnCatagoryComboBox = new System.Windows.Forms.ComboBox();
-            this.returnWeightComboBox = new System.Windows.Forms.ComboBox();
-            this.returnNameComboBox = new System.Windows.Forms.ComboBox();
-            this.returnBrandComboBox = new System.Windows.Forms.ComboBox();
             this.returnQuantityTxt = new System.Windows.Forms.TextBox();
+            this.returnBrandComboBox = new System.Windows.Forms.ComboBox();
+            this.returnNameComboBox = new System.Windows.Forms.ComboBox();
+            this.returnWeightComboBox = new System.Windows.Forms.ComboBox();
+            this.returnCatagoryComboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lastBillBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.finishBtn = new System.Windows.Forms.Button();
+            this.newBillBtn = new System.Windows.Forms.Button();
+            this.returnedItemsFinishBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.billDataGridView)).BeginInit();
             this.returnPanel.SuspendLayout();
             this.SuspendLayout();
@@ -184,15 +189,15 @@
             this.brandComboBox.TabIndex = 12;
             this.brandComboBox.SelectedIndexChanged += new System.EventHandler(this.brandComboBox_SelectedIndexChanged);
             // 
-            // button1
+            // addBtn
             // 
-            this.button1.Location = new System.Drawing.Point(32, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(564, 50);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "ADD";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addBtn.Location = new System.Drawing.Point(32, 281);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(564, 50);
+            this.addBtn.TabIndex = 14;
+            this.addBtn.Text = "ADD";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // billDataGridView
             // 
@@ -206,27 +211,9 @@
             this.billDataGridView.Location = new System.Drawing.Point(1246, 185);
             this.billDataGridView.Name = "billDataGridView";
             this.billDataGridView.RowTemplate.Height = 24;
-            this.billDataGridView.Size = new System.Drawing.Size(777, 754);
+            this.billDataGridView.Size = new System.Drawing.Size(777, 709);
             this.billDataGridView.TabIndex = 15;
             this.billDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.billDataGridView_CellContentClick);
-            // 
-            // numberOfStocksForPurchase
-            // 
-            this.numberOfStocksForPurchase.Location = new System.Drawing.Point(1065, 217);
-            this.numberOfStocksForPurchase.Name = "numberOfStocksForPurchase";
-            this.numberOfStocksForPurchase.Size = new System.Drawing.Size(149, 22);
-            this.numberOfStocksForPurchase.TabIndex = 16;
-            this.numberOfStocksForPurchase.TextChanged += new System.EventHandler(this.numberOfStocksForPurchase_TextChanged);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(652, 281);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(562, 50);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "CHECK";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // nameColumn
             // 
@@ -250,6 +237,24 @@
             this.priceColumn.HeaderText = "Price";
             this.priceColumn.Name = "priceColumn";
             // 
+            // numberOfStocksForPurchase
+            // 
+            this.numberOfStocksForPurchase.Location = new System.Drawing.Point(1065, 217);
+            this.numberOfStocksForPurchase.Name = "numberOfStocksForPurchase";
+            this.numberOfStocksForPurchase.Size = new System.Drawing.Size(149, 22);
+            this.numberOfStocksForPurchase.TabIndex = 16;
+            this.numberOfStocksForPurchase.TextChanged += new System.EventHandler(this.numberOfStocksForPurchase_TextChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(652, 281);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(562, 50);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "CHECK";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // returnBtn
             // 
             this.returnBtn.Location = new System.Drawing.Point(32, 352);
@@ -263,6 +268,7 @@
             // returnPanel
             // 
             this.returnPanel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.returnPanel.Controls.Add(this.returnedItemsFinishBtn);
             this.returnPanel.Controls.Add(this.returnQuantityTxt);
             this.returnPanel.Controls.Add(this.returnBrandComboBox);
             this.returnPanel.Controls.Add(this.returnNameComboBox);
@@ -283,90 +289,49 @@
             this.returnPanel.Size = new System.Drawing.Size(564, 513);
             this.returnPanel.TabIndex = 19;
             // 
-            // label8
+            // returnQuantityTxt
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 30);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 17);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Catagory";
+            this.returnQuantityTxt.Location = new System.Drawing.Point(206, 206);
+            this.returnQuantityTxt.Name = "returnQuantityTxt";
+            this.returnQuantityTxt.Size = new System.Drawing.Size(149, 22);
+            this.returnQuantityTxt.TabIndex = 21;
+            this.returnQuantityTxt.TextChanged += new System.EventHandler(this.returnQuantityTxt_TextChanged);
             // 
-            // label9
+            // returnBrandComboBox
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 73);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 17);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Brand";
+            this.returnBrandComboBox.FormattingEnabled = true;
+            this.returnBrandComboBox.Location = new System.Drawing.Point(206, 73);
+            this.returnBrandComboBox.Name = "returnBrandComboBox";
+            this.returnBrandComboBox.Size = new System.Drawing.Size(149, 24);
+            this.returnBrandComboBox.TabIndex = 20;
+            this.returnBrandComboBox.SelectedIndexChanged += new System.EventHandler(this.returnBrandComboBox_SelectedIndexChanged);
             // 
-            // label10
+            // returnNameComboBox
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 118);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 17);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Name";
+            this.returnNameComboBox.FormattingEnabled = true;
+            this.returnNameComboBox.Location = new System.Drawing.Point(206, 118);
+            this.returnNameComboBox.Name = "returnNameComboBox";
+            this.returnNameComboBox.Size = new System.Drawing.Size(149, 24);
+            this.returnNameComboBox.TabIndex = 19;
+            this.returnNameComboBox.SelectedIndexChanged += new System.EventHandler(this.returnNameComboBox_SelectedIndexChanged);
             // 
-            // label11
+            // returnWeightComboBox
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 162);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 17);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Scale";
+            this.returnWeightComboBox.FormattingEnabled = true;
+            this.returnWeightComboBox.Location = new System.Drawing.Point(206, 162);
+            this.returnWeightComboBox.Name = "returnWeightComboBox";
+            this.returnWeightComboBox.Size = new System.Drawing.Size(149, 24);
+            this.returnWeightComboBox.TabIndex = 18;
+            this.returnWeightComboBox.SelectedIndexChanged += new System.EventHandler(this.returnWeightComboBox_SelectedIndexChanged);
             // 
-            // label12
+            // returnCatagoryComboBox
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(27, 206);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 17);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Quantity";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(134, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 20);
-            this.label13.TabIndex = 12;
-            this.label13.Text = ":";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(134, 203);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 20);
-            this.label14.TabIndex = 13;
-            this.label14.Text = ":";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(134, 159);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 20);
-            this.label15.TabIndex = 14;
-            this.label15.Text = ":";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(134, 118);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(15, 20);
-            this.label16.TabIndex = 15;
-            this.label16.Text = ":";
+            this.returnCatagoryComboBox.FormattingEnabled = true;
+            this.returnCatagoryComboBox.Location = new System.Drawing.Point(206, 30);
+            this.returnCatagoryComboBox.Name = "returnCatagoryComboBox";
+            this.returnCatagoryComboBox.Size = new System.Drawing.Size(149, 24);
+            this.returnCatagoryComboBox.TabIndex = 17;
+            this.returnCatagoryComboBox.SelectedIndexChanged += new System.EventHandler(this.returnCatagoryComboBox_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -378,60 +343,156 @@
             this.label17.TabIndex = 16;
             this.label17.Text = ":";
             // 
-            // returnCatagoryComboBox
+            // label16
             // 
-            this.returnCatagoryComboBox.FormattingEnabled = true;
-            this.returnCatagoryComboBox.Location = new System.Drawing.Point(206, 30);
-            this.returnCatagoryComboBox.Name = "returnCatagoryComboBox";
-            this.returnCatagoryComboBox.Size = new System.Drawing.Size(149, 24);
-            this.returnCatagoryComboBox.TabIndex = 17;
-            this.returnCatagoryComboBox.SelectedIndexChanged += new System.EventHandler(this.returnCatagoryComboBox_SelectedIndexChanged);
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(134, 118);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(15, 20);
+            this.label16.TabIndex = 15;
+            this.label16.Text = ":";
             // 
-            // returnWeightComboBox
+            // label15
             // 
-            this.returnWeightComboBox.FormattingEnabled = true;
-            this.returnWeightComboBox.Location = new System.Drawing.Point(206, 162);
-            this.returnWeightComboBox.Name = "returnWeightComboBox";
-            this.returnWeightComboBox.Size = new System.Drawing.Size(149, 24);
-            this.returnWeightComboBox.TabIndex = 18;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(134, 159);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(15, 20);
+            this.label15.TabIndex = 14;
+            this.label15.Text = ":";
             // 
-            // returnNameComboBox
+            // label14
             // 
-            this.returnNameComboBox.FormattingEnabled = true;
-            this.returnNameComboBox.Location = new System.Drawing.Point(206, 118);
-            this.returnNameComboBox.Name = "returnNameComboBox";
-            this.returnNameComboBox.Size = new System.Drawing.Size(149, 24);
-            this.returnNameComboBox.TabIndex = 19;
-            this.returnNameComboBox.SelectedIndexChanged += new System.EventHandler(this.returnNameComboBox_SelectedIndexChanged);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(134, 203);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 20);
+            this.label14.TabIndex = 13;
+            this.label14.Text = ":";
             // 
-            // returnBrandComboBox
+            // label13
             // 
-            this.returnBrandComboBox.FormattingEnabled = true;
-            this.returnBrandComboBox.Location = new System.Drawing.Point(206, 73);
-            this.returnBrandComboBox.Name = "returnBrandComboBox";
-            this.returnBrandComboBox.Size = new System.Drawing.Size(149, 24);
-            this.returnBrandComboBox.TabIndex = 20;
-            this.returnBrandComboBox.SelectedIndexChanged += new System.EventHandler(this.returnBrandComboBox_SelectedIndexChanged);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(134, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 20);
+            this.label13.TabIndex = 12;
+            this.label13.Text = ":";
             // 
-            // returnQuantityTxt
+            // label12
             // 
-            this.returnQuantityTxt.Location = new System.Drawing.Point(206, 206);
-            this.returnQuantityTxt.Name = "returnQuantityTxt";
-            this.returnQuantityTxt.Size = new System.Drawing.Size(149, 22);
-            this.returnQuantityTxt.TabIndex = 21;
-            this.returnQuantityTxt.TextChanged += new System.EventHandler(this.returnQuantityTxt_TextChanged);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(27, 206);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Quantity";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 162);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 17);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Scale";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 118);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 17);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Name";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 73);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 17);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Brand";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 17);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Catagory";
+            // 
+            // lastBillBtn
+            // 
+            this.lastBillBtn.Location = new System.Drawing.Point(1246, 917);
+            this.lastBillBtn.Name = "lastBillBtn";
+            this.lastBillBtn.Size = new System.Drawing.Size(75, 23);
+            this.lastBillBtn.TabIndex = 20;
+            this.lastBillBtn.Text = "Last Bill";
+            this.lastBillBtn.UseVisualStyleBackColor = true;
+            this.lastBillBtn.Click += new System.EventHandler(this.lastBillBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(1605, 917);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 21;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // finishBtn
+            // 
+            this.finishBtn.Location = new System.Drawing.Point(1950, 917);
+            this.finishBtn.Name = "finishBtn";
+            this.finishBtn.Size = new System.Drawing.Size(75, 23);
+            this.finishBtn.TabIndex = 22;
+            this.finishBtn.Text = "Finish";
+            this.finishBtn.UseVisualStyleBackColor = true;
+            this.finishBtn.Click += new System.EventHandler(this.finishBtn_Click);
+            // 
+            // newBillBtn
+            // 
+            this.newBillBtn.Location = new System.Drawing.Point(1139, 352);
+            this.newBillBtn.Name = "newBillBtn";
+            this.newBillBtn.Size = new System.Drawing.Size(75, 23);
+            this.newBillBtn.TabIndex = 23;
+            this.newBillBtn.Text = "New Bill";
+            this.newBillBtn.UseVisualStyleBackColor = true;
+            this.newBillBtn.Click += new System.EventHandler(this.newBillBtn_Click);
+            // 
+            // returnedItemsFinishBtn
+            // 
+            this.returnedItemsFinishBtn.Location = new System.Drawing.Point(206, 265);
+            this.returnedItemsFinishBtn.Name = "returnedItemsFinishBtn";
+            this.returnedItemsFinishBtn.Size = new System.Drawing.Size(149, 23);
+            this.returnedItemsFinishBtn.TabIndex = 22;
+            this.returnedItemsFinishBtn.Text = "Finish";
+            this.returnedItemsFinishBtn.UseVisualStyleBackColor = true;
+            this.returnedItemsFinishBtn.Click += new System.EventHandler(this.returnedItemsFinishBtn_Click);
             // 
             // SalesManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1914, 1044);
+            this.ClientSize = new System.Drawing.Size(1906, 1037);
+            this.Controls.Add(this.newBillBtn);
+            this.Controls.Add(this.finishBtn);
+            this.Controls.Add(this.deleteBtn);
+            this.Controls.Add(this.lastBillBtn);
             this.Controls.Add(this.returnPanel);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.numberOfStocksForPurchase);
             this.Controls.Add(this.billDataGridView);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addBtn);
             this.Controls.Add(this.brandComboBox);
             this.Controls.Add(this.nameComboBox);
             this.Controls.Add(this.weightComboBox);
@@ -472,7 +533,7 @@
         private System.Windows.Forms.ComboBox weightComboBox;
         private System.Windows.Forms.ComboBox nameComboBox;
         private System.Windows.Forms.ComboBox brandComboBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.DataGridView billDataGridView;
         private System.Windows.Forms.TextBox numberOfStocksForPurchase;
         private System.Windows.Forms.Button button2;
@@ -497,5 +558,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button lastBillBtn;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button finishBtn;
+        private System.Windows.Forms.Button newBillBtn;
+        private System.Windows.Forms.Button returnedItemsFinishBtn;
     }
 }

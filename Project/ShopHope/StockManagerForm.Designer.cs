@@ -1,6 +1,6 @@
 ﻿namespace ShopHope
 {
-    partial class changeBtn
+    partial class StockManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -63,26 +63,26 @@
             this.addQuantityTxt = new System.Windows.Forms.TextBox();
             this.addQuantityBtn = new System.Windows.Forms.Button();
             this.newStockPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.newCatagoryTxt = new System.Windows.Forms.TextBox();
-            this.newWarningLevelTxt = new System.Windows.Forms.TextBox();
-            this.newPriceTxt = new System.Windows.Forms.TextBox();
-            this.newQuantityTxt = new System.Windows.Forms.TextBox();
-            this.newExpiryTxt = new System.Windows.Forms.TextBox();
-            this.newWeightTxt = new System.Windows.Forms.TextBox();
-            this.newNameTxt = new System.Windows.Forms.TextBox();
-            this.newBrandTxt = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.addNewBtn = new System.Windows.Forms.Button();
             this.addNewInPanelBtn = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.newBrandTxt = new System.Windows.Forms.TextBox();
+            this.newNameTxt = new System.Windows.Forms.TextBox();
+            this.newWeightTxt = new System.Windows.Forms.TextBox();
+            this.newExpiryTxt = new System.Windows.Forms.TextBox();
+            this.newQuantityTxt = new System.Windows.Forms.TextBox();
+            this.newPriceTxt = new System.Windows.Forms.TextBox();
+            this.newWarningLevelTxt = new System.Windows.Forms.TextBox();
+            this.newCatagoryTxt = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.addNewBtn = new System.Windows.Forms.Button();
             this.newStockPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -268,7 +268,6 @@
             // 
             // weightComboBox
             // 
-            this.weightComboBox.FormattingEnabled = true;
             this.weightComboBox.Location = new System.Drawing.Point(555, 304);
             this.weightComboBox.Name = "weightComboBox";
             this.weightComboBox.Size = new System.Drawing.Size(276, 24);
@@ -421,85 +420,82 @@
             this.newStockPanel.Size = new System.Drawing.Size(619, 369);
             this.newStockPanel.TabIndex = 43;
             // 
-            // label3
+            // addNewInPanelBtn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 20);
-            this.label3.TabIndex = 16;
-            this.label3.Text = ":";
+            this.addNewInPanelBtn.Location = new System.Drawing.Point(81, 329);
+            this.addNewInPanelBtn.Name = "addNewInPanelBtn";
+            this.addNewInPanelBtn.Size = new System.Drawing.Size(75, 30);
+            this.addNewInPanelBtn.TabIndex = 34;
+            this.addNewInPanelBtn.Text = "Add New";
+            this.addNewInPanelBtn.UseVisualStyleBackColor = true;
+            this.addNewInPanelBtn.Click += new System.EventHandler(this.addNewInPanelBtn_Click);
             // 
-            // label13
+            // textBox9
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(24, 79);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 20);
-            this.label13.TabIndex = 17;
-            this.label13.Text = ":";
+            this.textBox9.Location = new System.Drawing.Point(81, 280);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(193, 22);
+            this.textBox9.TabIndex = 33;
             // 
-            // label21
+            // newBrandTxt
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(24, 113);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(15, 20);
-            this.label21.TabIndex = 18;
-            this.label21.Text = ":";
+            this.newBrandTxt.Location = new System.Drawing.Point(81, 48);
+            this.newBrandTxt.Name = "newBrandTxt";
+            this.newBrandTxt.Size = new System.Drawing.Size(193, 22);
+            this.newBrandTxt.TabIndex = 32;
             // 
-            // label22
+            // newNameTxt
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(24, 150);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(15, 20);
-            this.label22.TabIndex = 19;
-            this.label22.Text = ":";
+            this.newNameTxt.Location = new System.Drawing.Point(81, 83);
+            this.newNameTxt.Name = "newNameTxt";
+            this.newNameTxt.Size = new System.Drawing.Size(193, 22);
+            this.newNameTxt.TabIndex = 31;
             // 
-            // label23
+            // newWeightTxt
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(24, 185);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(15, 20);
-            this.label23.TabIndex = 20;
-            this.label23.Text = ":";
+            this.newWeightTxt.Location = new System.Drawing.Point(81, 117);
+            this.newWeightTxt.Name = "newWeightTxt";
+            this.newWeightTxt.Size = new System.Drawing.Size(193, 22);
+            this.newWeightTxt.TabIndex = 30;
+            this.newWeightTxt.TextChanged += new System.EventHandler(this.newWeightTxt_TextChanged);
             // 
-            // label24
+            // newExpiryTxt
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(24, 12);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(15, 20);
-            this.label24.TabIndex = 21;
-            this.label24.Text = ":";
+            this.newExpiryTxt.Location = new System.Drawing.Point(81, 215);
+            this.newExpiryTxt.Name = "newExpiryTxt";
+            this.newExpiryTxt.Size = new System.Drawing.Size(193, 22);
+            this.newExpiryTxt.TabIndex = 29;
             // 
-            // label25
+            // newQuantityTxt
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(24, 280);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(15, 20);
-            this.label25.TabIndex = 22;
-            this.label25.Text = ":";
+            this.newQuantityTxt.Location = new System.Drawing.Point(81, 183);
+            this.newQuantityTxt.Name = "newQuantityTxt";
+            this.newQuantityTxt.Size = new System.Drawing.Size(193, 22);
+            this.newQuantityTxt.TabIndex = 28;
+            this.newQuantityTxt.TextChanged += new System.EventHandler(this.newQuantityTxt_TextChanged);
             // 
-            // label26
+            // newPriceTxt
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(24, 247);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(15, 20);
-            this.label26.TabIndex = 23;
-            this.label26.Text = ":";
+            this.newPriceTxt.Location = new System.Drawing.Point(81, 150);
+            this.newPriceTxt.Name = "newPriceTxt";
+            this.newPriceTxt.Size = new System.Drawing.Size(193, 22);
+            this.newPriceTxt.TabIndex = 27;
+            this.newPriceTxt.TextChanged += new System.EventHandler(this.newPriceTxt_TextChanged);
+            // 
+            // newWarningLevelTxt
+            // 
+            this.newWarningLevelTxt.Location = new System.Drawing.Point(81, 247);
+            this.newWarningLevelTxt.Name = "newWarningLevelTxt";
+            this.newWarningLevelTxt.Size = new System.Drawing.Size(193, 22);
+            this.newWarningLevelTxt.TabIndex = 26;
+            this.newWarningLevelTxt.TextChanged += new System.EventHandler(this.newWarningLevelTxt_TextChanged);
+            // 
+            // newCatagoryTxt
+            // 
+            this.newCatagoryTxt.Location = new System.Drawing.Point(81, 14);
+            this.newCatagoryTxt.Name = "newCatagoryTxt";
+            this.newCatagoryTxt.Size = new System.Drawing.Size(193, 22);
+            this.newCatagoryTxt.TabIndex = 25;
             // 
             // label27
             // 
@@ -511,72 +507,85 @@
             this.label27.TabIndex = 24;
             this.label27.Text = ":";
             // 
-            // newCatagoryTxt
+            // label26
             // 
-            this.newCatagoryTxt.Location = new System.Drawing.Point(81, 14);
-            this.newCatagoryTxt.Name = "newCatagoryTxt";
-            this.newCatagoryTxt.Size = new System.Drawing.Size(193, 22);
-            this.newCatagoryTxt.TabIndex = 25;
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(24, 247);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(15, 20);
+            this.label26.TabIndex = 23;
+            this.label26.Text = ":";
             // 
-            // newWarningLevelTxt
+            // label25
             // 
-            this.newWarningLevelTxt.Location = new System.Drawing.Point(81, 247);
-            this.newWarningLevelTxt.Name = "newWarningLevelTxt";
-            this.newWarningLevelTxt.Size = new System.Drawing.Size(193, 22);
-            this.newWarningLevelTxt.TabIndex = 26;
-            this.newWarningLevelTxt.TextChanged += new System.EventHandler(this.newWarningLevelTxt_TextChanged);
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(24, 280);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(15, 20);
+            this.label25.TabIndex = 22;
+            this.label25.Text = ":";
             // 
-            // newPriceTxt
+            // label24
             // 
-            this.newPriceTxt.Location = new System.Drawing.Point(81, 150);
-            this.newPriceTxt.Name = "newPriceTxt";
-            this.newPriceTxt.Size = new System.Drawing.Size(193, 22);
-            this.newPriceTxt.TabIndex = 27;
-            this.newPriceTxt.TextChanged += new System.EventHandler(this.newPriceTxt_TextChanged);
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(24, 12);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(15, 20);
+            this.label24.TabIndex = 21;
+            this.label24.Text = ":";
             // 
-            // newQuantityTxt
+            // label23
             // 
-            this.newQuantityTxt.Location = new System.Drawing.Point(81, 183);
-            this.newQuantityTxt.Name = "newQuantityTxt";
-            this.newQuantityTxt.Size = new System.Drawing.Size(193, 22);
-            this.newQuantityTxt.TabIndex = 28;
-            this.newQuantityTxt.TextChanged += new System.EventHandler(this.newQuantityTxt_TextChanged);
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(24, 185);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(15, 20);
+            this.label23.TabIndex = 20;
+            this.label23.Text = ":";
             // 
-            // newExpiryTxt
+            // label22
             // 
-            this.newExpiryTxt.Location = new System.Drawing.Point(81, 215);
-            this.newExpiryTxt.Name = "newExpiryTxt";
-            this.newExpiryTxt.Size = new System.Drawing.Size(193, 22);
-            this.newExpiryTxt.TabIndex = 29;
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(24, 150);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(15, 20);
+            this.label22.TabIndex = 19;
+            this.label22.Text = ":";
             // 
-            // newWeightTxt
+            // label21
             // 
-            this.newWeightTxt.Location = new System.Drawing.Point(81, 117);
-            this.newWeightTxt.Name = "newWeightTxt";
-            this.newWeightTxt.Size = new System.Drawing.Size(193, 22);
-            this.newWeightTxt.TabIndex = 30;
-            this.newWeightTxt.TextChanged += new System.EventHandler(this.newWeightTxt_TextChanged);
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(24, 113);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(15, 20);
+            this.label21.TabIndex = 18;
+            this.label21.Text = ":";
             // 
-            // newNameTxt
+            // label13
             // 
-            this.newNameTxt.Location = new System.Drawing.Point(81, 83);
-            this.newNameTxt.Name = "newNameTxt";
-            this.newNameTxt.Size = new System.Drawing.Size(193, 22);
-            this.newNameTxt.TabIndex = 31;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(24, 79);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 20);
+            this.label13.TabIndex = 17;
+            this.label13.Text = ":";
             // 
-            // newBrandTxt
+            // label3
             // 
-            this.newBrandTxt.Location = new System.Drawing.Point(81, 48);
-            this.newBrandTxt.Name = "newBrandTxt";
-            this.newBrandTxt.Size = new System.Drawing.Size(193, 22);
-            this.newBrandTxt.TabIndex = 32;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(81, 280);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(193, 22);
-            this.textBox9.TabIndex = 33;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 20);
+            this.label3.TabIndex = 16;
+            this.label3.Text = ":";
             // 
             // addNewBtn
             // 
@@ -588,17 +597,7 @@
             this.addNewBtn.UseVisualStyleBackColor = true;
             this.addNewBtn.Click += new System.EventHandler(this.addNewBtn_Click);
             // 
-            // addNewInPanelBtn
-            // 
-            this.addNewInPanelBtn.Location = new System.Drawing.Point(81, 329);
-            this.addNewInPanelBtn.Name = "addNewInPanelBtn";
-            this.addNewInPanelBtn.Size = new System.Drawing.Size(75, 30);
-            this.addNewInPanelBtn.TabIndex = 34;
-            this.addNewInPanelBtn.Text = "Add New";
-            this.addNewInPanelBtn.UseVisualStyleBackColor = true;
-            this.addNewInPanelBtn.Click += new System.EventHandler(this.addNewInPanelBtn_Click);
-            // 
-            // changeBtn
+            // StockManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -639,7 +638,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "changeBtn";
+            this.Name = "StockManagerForm";
             this.Text = "StockManager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StockManager_Load);

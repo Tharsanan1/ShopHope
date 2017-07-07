@@ -12,46 +12,66 @@ namespace ShopHope
     {
         static string ConnString = "server = 127.0.0.1; port = 3308; DATABASE = shophope; UID = root; PASSWORD = Thars@123;";
         static MySqlConnection conn = new MySqlConnection(ConnString);
-        static MySqlConnection conn1;
         static MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
-        static MySqlCommandBuilder commandBuilder;
         static MySqlCommand command;
         static List<MySqlConnection> connList = new List<MySqlConnection>();
+        static List<bool> freeList = new List<bool>();
+        static object lockObject = new object();
+        
         public static void performConnection(string s) {
             try
             {
                 
                 command = new MySqlCommand(s,conn);
-                //dataAdapter.SelectCommand = new MySqlCommand(s, conn);
-                //commandBuilder = new MySqlCommandBuilder(dataAdapter);
                 conn.Open();
                 MySqlDataReader dataReader;
                 dataReader = command.ExecuteReader();
                 while(dataReader.Read()) {
 
                 }
-                conn.Close();
                 
             }
             catch(Exception e) {
                 Console.WriteLine("exception occured in connection: "+e.Message);
             }
+            finally {
+                conn.Close();
+            }
         }
         public static MySqlConnection getConnection()
         {
-            if(connList.Count == 0) {
-                connList.Add(new MySqlConnection(ConnString));
-                return connList[0];
-            }
-            else {
-                //bool flag = false;
-                for(int i =0; i<connList.Count; i++) {
-                    if(connList[i].State.ToString().Equals("Closed")) {
-                        return connList[i];
+            lock (lockObject)
+            {
+
+                foreach (MySqlConnection conn in connList)
+                {
+                    if (conn.State.ToString().Equals("Closed"))
+                    {
+                        freeList[connList.IndexOf(conn)] = true;
                     }
                 }
-                connList.Add(new MySqlConnection(ConnString));
-                return connList[connList.Count-1];
+                Console.WriteLine("connection count : " + connList.Count);
+                if (connList.Count == 0)
+                {
+                    connList.Add(new MySqlConnection(ConnString));
+                    freeList.Add(false);
+                    return connList[0];
+                }
+                else
+                {
+                    //bool flag = false;
+                    for (int i = 0; i < connList.Count; i++)
+                    {
+                        if (connList[i].State.ToString().Equals("Closed") && freeList[i] == true)
+                        {
+                            freeList[i] = false;
+                            return connList[i];
+                        }
+                    }
+                    connList.Add(new MySqlConnection(ConnString));
+                    freeList.Add(false);
+                    return connList[connList.Count - 1];
+                }
             }
         }
     }

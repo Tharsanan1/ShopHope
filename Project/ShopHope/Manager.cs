@@ -1,45 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ShopHope
 {
-    public partial class Manager : Form
+    class Manager : Employee
     {
-        public Manager()
+        private Manager(string name, string id, string mail, long phoneNo, int age, string password) : base(name, id, mail, phoneNo, age, password,"Manager")
         {
-            InitializeComponent();
+        }
+        public static bool getManager(string name, string id, string mail, long phoneNo, int age, string password) {
+            bool flag = false;
+            try
+            {
+                MySqlConnection conn = Connection.getConnection();
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.employeetable WHERE post = '"+"Manager"+"'", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    flag = true;
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error occured at stock manager change btn " + ex.Message);
+            }
+            if(!flag) {
+                new Manager(name,id,mail,phoneNo,age,password);
+                
+            }
+            return !flag;
+
         }
 
-        private void Manager_MouseClick(object sender, MouseEventArgs e)
+        public static void getEmployee(string name, string id, string mail, long phoneNo, int age, string password, string post)
         {
-            MessageBox.Show("x " + e.X + "y " + e.Y);
-        }   
-
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("x " + e.X + "y " + e.Y);
-        }
-
-        private void panel3_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("x " + e.X + "y " + e.Y);
-        }
-
-        private void profilePanel_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("x " + e.X + "y " + e.Y);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Product(1,2,"a","b","c",2.3,3.4);
+            if(post.Equals("Manager")) {
+                getManager(name,id,mail,phoneNo,age,password);
+            }    
         }
     }
 }

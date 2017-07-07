@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace ShopHope
 {
-    class StockManager : Employee
+    class SalesMan : Employee
     {
-        private StockManager(string name, string id, string mail, long phoneNo, int age, string password) : base(name, id, mail, phoneNo, age, password,"StockManager")
+        private SalesMan(string name, string id, string mail, long phoneNo, int age, string password) : base(name, id, mail, phoneNo, age, password,"SalesMan")
         {
+            
         }
 
         public static void getEmployee(string name, string id, string mail, long phoneNo, int age, string password, string post)
         {
-            if(post.Equals("StockManager")) {
-                new StockManager(name,id,mail,phoneNo,age,password);
+            if (post.Equals("SalesMan"))
+            {
+                new SalesMan(name, id, mail, phoneNo, age, password);
             }
         }
     }
