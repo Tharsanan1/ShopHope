@@ -33,10 +33,12 @@ namespace ShopHope
             count = 0;
             userNameTxt.Text = "tharsanan";
             passWordTxt.Text = "123456";
+            passWordTxt.PasswordChar = '\u25CF';
             //ManagerForm.getManagerForm().Show();
-            SalesManForm.getsalesManform().Show();
-            StockManagerForm.getStockManagerForm().Show();
             
+            StockManagementSystem.doDailyWork();
+            EmployeeManagementSystem.doDailyWork();
+
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -75,6 +77,22 @@ namespace ShopHope
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "     Are you sure you want to close? \n            It will close all windows", "Closing", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void backGroundPanal_Paint(object sender, PaintEventArgs e)
@@ -159,7 +177,7 @@ namespace ShopHope
                 signUpPanel.Visible = false;
                 if (salesManRadioBtn.Checked)
                 {
-                    SalesMan.getEmployee(nameTxt.Text, IDTxt.Text, mailTxt.Text, long.Parse(PhoneNoTxt.Text), int.Parse(ageTxt.Text), passwordSecondTxt.Text, "Salesman");
+                    SalesMan.getEmployee(nameTxt.Text, IDTxt.Text, mailTxt.Text, long.Parse(PhoneNoTxt.Text), int.Parse(ageTxt.Text), passwordSecondTxt.Text, "SalesMan");
                     userNameTxt.Text = nameTxt.Text;
                     nameTxt.Text = "";
                     IDTxt.Text = "";
@@ -208,19 +226,17 @@ namespace ShopHope
                 {
                     if(dataReader.GetString("post").Equals("Manager")) {
                         form = ManagerForm.getManagerForm();
-                        //form.TopMost = true;
                         form.Show();
-                        //form.TopMost = false;
                     }
                     else if(dataReader.GetString("post").Equals("StockManager")) {
-                        StockManagerForm.getStockManagerForm().Show();
+                        StockManagerForm.getStockManagerForm(dataReader.GetString("userName")).Show();
                     }
                     else if (dataReader.GetString("post").Equals("SalesMan"))
                     {
-                        SalesManForm.getsalesManform().Show();
+                        SalesManForm.getsalesManform(dataReader.GetString("userName")).Show();
                     }
                     else {
-                        MessageBox.Show("Sorry you dot have any interfaces...");
+                        MessageBox.Show("Sorry you don't have any windows...");
                     }
                 }
             }
@@ -270,7 +286,7 @@ namespace ShopHope
                 MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    MailMessage mail = new MailMessage("shophopecompany@gmail.com", dataReader.GetString("emailAdress"),"mail",dataReader.GetString("passWord"));
+                    MailMessage mail = new MailMessage("shophopecompany@gmail.com", dataReader.GetString("emailAdress"),"Your Password Info",("User Name : "+dataReader.GetString("userName")+"\n password : "+dataReader.GetString("passWord")));
                     SmtpClient client = new SmtpClient("smtp.gmail.com");
                     client.Port = 587;
                     client.Credentials = new System.Net.NetworkCredential("shophopecompany@gmail.com","shophope@mora");
@@ -287,7 +303,6 @@ namespace ShopHope
             {
                 conn.Close();
             }
-
         }
     }
 }

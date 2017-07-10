@@ -3,18 +3,118 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace ShopHope
 {
     class StockManagementSystem
     {
-        public void updatePrice(string catagory, string brand , string name, double price) {
+        static System.Timers.Timer timer;
+        
 
-        }
-        public void updatePrice(int id, double price)
+        private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-
+            
         }
+        public static void doDailyWork() {
+            checkForLackStocks();
+            checkOfferClose();
+        }
+        private static void checkOfferClose() {
+            MySqlConnection conn = Connection.getConnection();
+            DateTime date = DateTime.Today;
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if(dataReader.GetString("offerDate").Length==0) {
+                        continue;
+                    }
+                    Console.WriteLine("date and datas:  "+dataReader.GetString("offerDate")+" "+ date.ToString());
+                    if(int.Parse(dataReader.GetString("offerDate"))<int.Parse(date.ToString("yyyyMMdd"))) {
+                        string id = dataReader.GetString("stockId"); 
+                        MySqlConnection conn1 = Connection.getConnection();
+                        string realPrice = "";
+                        string realOfferPrice = "";
+                        try
+                        {
+                            conn1.Open();
+                            MySqlCommand command1 = new MySqlCommand("SELECT * FROM shophope.stocks WHERE stockId = '"+id+"'", conn1);
+                            MySqlDataReader dataReader1 = command1.ExecuteReader();
+                            while (dataReader1.Read())
+                            {
+                                realPrice = dataReader1.GetString("offerPrice");
+                                realOfferPrice = dataReader1.GetString("price");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("error occured at stock manager " + ex.Message);
+                        }
+                        finally
+                        {
+                            conn1.Close();
+                        }
+                        conn1 = Connection.getConnection();
+                        try
+                        {
+                            conn1.Open();
+                            MySqlCommand command1 = new MySqlCommand("UPDATE shophope.stocks SET price = '"+realPrice+"', offerDate = '' WHERE stockId = '" + id + "'", conn1);
+                            MySqlDataReader dataReader1 = command1.ExecuteReader();
+                            while (dataReader1.Read())
+                            {
+                                
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("error occured at stock manager " + ex.Message);
+                        }
+                        finally
+                        {
+                            conn1.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error occured at stock manager " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private static void checkForLackStocks() {
+            MySqlConnection conn = Connection.getConnection();
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    
+                    if(int.Parse(dataReader.GetString("warningLevel"))>=int.Parse(dataReader.GetString("quantity")) && dataReader.GetString("warnable").Equals("t")) {
+                        Mediator.notifyManager("Low Stock Warning stock Id: "+dataReader.GetString("stockId"));
 
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error occured at stock manager weight combo " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeManagementSystem.cs" />
     <Compile Include="Labour.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Mediator.cs" />

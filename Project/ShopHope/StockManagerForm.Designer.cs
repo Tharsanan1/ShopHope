@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockManagerForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,6 +84,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.addNewBtn = new System.Windows.Forms.Button();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.newStockPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,10 +93,12 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Thistle;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.nameLbl);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2200, 154);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -298,6 +303,7 @@
             this.priceTxt.Name = "priceTxt";
             this.priceTxt.Size = new System.Drawing.Size(276, 22);
             this.priceTxt.TabIndex = 28;
+            this.priceTxt.TextChanged += new System.EventHandler(this.priceTxt_TextChanged);
             // 
             // expieryTxt
             // 
@@ -385,7 +391,7 @@
             // 
             // addQuantityBtn
             // 
-            this.addQuantityBtn.Image = global::ShopHope.Properties.Resources.Button_Add_icon__1_;
+            this.addQuantityBtn.Image = ((System.Drawing.Image)(resources.GetObject("addQuantityBtn.Image")));
             this.addQuantityBtn.Location = new System.Drawing.Point(805, 370);
             this.addQuantityBtn.Name = "addQuantityBtn";
             this.addQuantityBtn.Size = new System.Drawing.Size(26, 24);
@@ -597,6 +603,15 @@
             this.addNewBtn.UseVisualStyleBackColor = true;
             this.addNewBtn.Click += new System.EventHandler(this.addNewBtn_Click);
             // 
+            // nameLbl
+            // 
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLbl.Location = new System.Drawing.Point(943, 24);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(0, 25);
+            this.nameLbl.TabIndex = 0;
+            // 
             // StockManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -642,6 +657,8 @@
             this.Text = "StockManager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StockManager_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.newStockPanel.ResumeLayout(false);
             this.newStockPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -706,5 +723,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addNewBtn;
+        private System.Windows.Forms.Label nameLbl;
     }
 }

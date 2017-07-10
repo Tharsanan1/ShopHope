@@ -13,23 +13,60 @@ namespace ShopHope
 {
     public partial class StockManagerForm : Form
     {
-        static StockManagerForm stockManagerForm;
-        private StockManagerForm()
+        static List<StockManagerForm> stockManagerFormList = new List<StockManagerForm>();
+        static List<string> formPointer = new List<string>();
+        static object lockObject = new object();
+        private StockManagerForm(string name)
         {
             InitializeComponent();
             newStockPanel.Visible = false;
             fillCatagoryComboBox();
             fillStockIDComboBox();
+            nameLbl.Text = name;
         }
-        public static StockManagerForm getStockManagerForm() {
-            if(stockManagerForm == null) {
-                    stockManagerForm = new StockManagerForm();
-            }
-                return stockManagerForm;
+        public static StockManagerForm getStockManagerForm(string name) {
+            lock (lockObject) {
+                if (stockManagerFormList.Count == 0) 
+                {
+                    stockManagerFormList.Add(new StockManagerForm(name.ToUpper()));
+                    formPointer.Add(name);
+                    return stockManagerFormList[0];
+                }
+                else {
+                    if (formPointer.Contains(name)) 
+                    {
+                        return stockManagerFormList[formPointer.IndexOf(name.ToUpper())];
+                    }
+                    else 
+                    {
+                        stockManagerFormList.Add(new StockManagerForm(name.ToUpper()));
+                        formPointer.Add(name);
+                        return stockManagerFormList[stockManagerFormList.Count-1];
+                    }
+                }
+            }   
         }
         private void StockManager_Load(object sender, EventArgs e)
         {
             
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    Hide();
+                    e.Cancel = true;
+                    break;
+            }
         }
         public void fillStockIDComboBox()
         {
@@ -175,7 +212,7 @@ namespace ShopHope
         {
             
             weightComboBox.Text = "";
-            brandComboBox.Items.Clear();
+            weightComboBox.Items.Clear();
             MySqlConnection conn = Connection.getConnection();
             try
             {
@@ -351,6 +388,10 @@ namespace ShopHope
 
         private void addNewInPanelBtn_Click(object sender, EventArgs e)
         {
+            if(!(newCatagoryTxt.Text.Length>0 && newBrandTxt.Text.Length>0 && newNameTxt.Text.Length>0 && newWeightTxt.Text.Length>0)) {
+                MessageBox.Show("Fill Boxes...");
+                return;
+            }
             MySqlConnection conn = Connection.getConnection();
             try
             {
@@ -365,6 +406,7 @@ namespace ShopHope
                 }
                 command = new MySqlCommand("INSERT INTO shophope.stocks (catagory,brand,name,weight,price,quantity,warningLevel,expirydate) VALUES ('"+newCatagoryTxt.Text+"','"+newBrandTxt.Text+"','"+newNameTxt.Text+"','"+newWeightTxt.Text+"','"+newPriceTxt.Text+"','"+newQuantityTxt.Text+"','"+newWarningLevelTxt.Text+"','"+newExpiryTxt.Text+"')",conn);
                 conn.Close();
+                conn = Connection.getConnection();
                 conn.Open();
                 dataReader = command.ExecuteReader();
                 while(dataReader.Read()) {
@@ -380,6 +422,8 @@ namespace ShopHope
             {
                 conn.Close();
             }
+            MessageBox.Show("Added");
+            newStockPanel.Visible = false;
         }
 
         private void newWeightTxt_TextChanged(object sender, EventArgs e)
@@ -433,8 +477,24 @@ namespace ShopHope
 
         private void addNewBtn_Click(object sender, EventArgs e)
         {
+            if(newStockPanel.Visible == false) { 
+                newStockPanel.Visible = true; 
+            }
+            else { 
+                newStockPanel.Visible = false; 
+            }
             
-            newStockPanel.Visible = true;
         }
+        
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void priceTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

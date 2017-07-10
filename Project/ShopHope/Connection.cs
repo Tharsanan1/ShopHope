@@ -12,6 +12,7 @@ namespace ShopHope
     {
         static string ConnString = "server = 127.0.0.1; port = 3308; DATABASE = shophope; UID = root; PASSWORD = Thars@123;";
         static MySqlConnection conn = new MySqlConnection(ConnString);
+        static MySqlConnection conn1 = new MySqlConnection(ConnString);
         static MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
         static MySqlCommand command;
         static List<MySqlConnection> connList = new List<MySqlConnection>();
@@ -37,6 +38,10 @@ namespace ShopHope
             finally {
                 conn.Close();
             }
+        }
+        public static MySqlConnection getExclusiveConnection()
+        {
+            return conn1;
         }
         public static MySqlConnection getConnection()
         {

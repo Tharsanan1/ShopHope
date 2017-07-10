@@ -51,6 +51,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.returnPanel = new System.Windows.Forms.Panel();
+            this.returnedItemsFinishBtn = new System.Windows.Forms.Button();
             this.returnQuantityTxt = new System.Windows.Forms.TextBox();
             this.returnBrandComboBox = new System.Windows.Forms.ComboBox();
             this.returnNameComboBox = new System.Windows.Forms.ComboBox();
@@ -70,7 +71,8 @@
             this.deleteBtn = new System.Windows.Forms.Button();
             this.finishBtn = new System.Windows.Forms.Button();
             this.newBillBtn = new System.Windows.Forms.Button();
-            this.returnedItemsFinishBtn = new System.Windows.Forms.Button();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.billDataGridView)).BeginInit();
             this.returnPanel.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +80,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
+            this.panel1.Controls.Add(this.nameLbl);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2200, 152);
@@ -289,6 +292,16 @@
             this.returnPanel.Size = new System.Drawing.Size(564, 513);
             this.returnPanel.TabIndex = 19;
             // 
+            // returnedItemsFinishBtn
+            // 
+            this.returnedItemsFinishBtn.Location = new System.Drawing.Point(206, 265);
+            this.returnedItemsFinishBtn.Name = "returnedItemsFinishBtn";
+            this.returnedItemsFinishBtn.Size = new System.Drawing.Size(149, 23);
+            this.returnedItemsFinishBtn.TabIndex = 22;
+            this.returnedItemsFinishBtn.Text = "Finish";
+            this.returnedItemsFinishBtn.UseVisualStyleBackColor = true;
+            this.returnedItemsFinishBtn.Click += new System.EventHandler(this.returnedItemsFinishBtn_Click);
+            // 
             // returnQuantityTxt
             // 
             this.returnQuantityTxt.Location = new System.Drawing.Point(206, 206);
@@ -468,15 +481,14 @@
             this.newBillBtn.UseVisualStyleBackColor = true;
             this.newBillBtn.Click += new System.EventHandler(this.newBillBtn_Click);
             // 
-            // returnedItemsFinishBtn
+            // nameLbl
             // 
-            this.returnedItemsFinishBtn.Location = new System.Drawing.Point(206, 265);
-            this.returnedItemsFinishBtn.Name = "returnedItemsFinishBtn";
-            this.returnedItemsFinishBtn.Size = new System.Drawing.Size(149, 23);
-            this.returnedItemsFinishBtn.TabIndex = 22;
-            this.returnedItemsFinishBtn.Text = "Finish";
-            this.returnedItemsFinishBtn.UseVisualStyleBackColor = true;
-            this.returnedItemsFinishBtn.Click += new System.EventHandler(this.returnedItemsFinishBtn_Click);
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLbl.Location = new System.Drawing.Point(767, 17);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(0, 25);
+            this.nameLbl.TabIndex = 0;
             // 
             // SalesManForm
             // 
@@ -510,6 +522,8 @@
             this.Text = "SalesManForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SalesManForm_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.billDataGridView)).EndInit();
             this.returnPanel.ResumeLayout(false);
             this.returnPanel.PerformLayout();
@@ -563,5 +577,6 @@
         private System.Windows.Forms.Button finishBtn;
         private System.Windows.Forms.Button newBillBtn;
         private System.Windows.Forms.Button returnedItemsFinishBtn;
+        private System.Windows.Forms.Label nameLbl;
     }
 }

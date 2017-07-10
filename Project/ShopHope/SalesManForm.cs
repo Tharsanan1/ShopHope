@@ -13,10 +13,14 @@ namespace ShopHope
 {
     public partial class SalesManForm : Form
     {
-        static SalesManForm salesmanForm;
+        static List<SalesManForm> salesManFormList = new List<SalesManForm>();
+        static List<string> formPointer = new List<string>();
+        static object lockObject = new object();
         double totalPrice;
         string returnedId;
-        private SalesManForm()
+        List<string> stockIdList;
+        List<string> quantityList;
+        private SalesManForm(string name)
         {
             InitializeComponent();
             returnPanel.Visible = false;
@@ -25,17 +29,54 @@ namespace ShopHope
             fillReturnCatagoryComboBox();
             totalPrice = 0;
             returnedId = "";
+            stockIdList = new List<string>();
+            quantityList = new List<string>();
         }
-        public static SalesManForm getsalesManform() {
-            if(salesmanForm == null) {
-                salesmanForm = new SalesManForm();
-            }
-            return salesmanForm;
+        public static SalesManForm getsalesManform(string name) {
+            lock (lockObject) {
+                if (salesManFormList.Count == 0)
+                {
+                    salesManFormList.Add(new SalesManForm(name.ToUpper()));
+                    formPointer.Add(name);
+                    return salesManFormList[0];
+                }
+                else
+                {
+                    if (formPointer.Contains(name))
+                    {
+                        return salesManFormList[formPointer.IndexOf(name)];
+                    }
+                    else
+                    {
+                        salesManFormList.Add(new SalesManForm(name.ToUpper()));
+                        formPointer.Add(name);
+                        return salesManFormList[salesManFormList.Count - 1];
+                    }
+                }
+            }        
         }
 
         private void SalesManForm_Load(object sender, EventArgs e)
         {
 
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    Hide();
+                    e.Cancel = true;
+                    break;
+            }
         }
         public void fillStockIDComboBox()
         {
@@ -150,6 +191,9 @@ namespace ShopHope
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+
+            
             MySqlConnection conn = Connection.getConnection();
             try
             {
@@ -160,6 +204,10 @@ namespace ShopHope
                 MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
+                    if(stockIdList.Contains(dataReader.GetString("stockId"))) {
+                        MessageBox.Show("Already this kind of product you can edit there!");
+                        return;
+                    }
                     if(numberOfStocksForPurchase.Text.Length==0) {
                         numberOfStocksForPurchase.Text = "1";
                     }
@@ -176,6 +224,8 @@ namespace ShopHope
                     row.Cells[3].Value = temp;
                     billDataGridView.Rows.Add(row);
                     catagoryComboBox.Text = "";
+                    stockIdList.Add(dataReader.GetString("stockId"));
+                    quantityList.Add(dataReader.GetString("quantity"));
                 }
             }
             catch (Exception ex)
@@ -515,7 +565,11 @@ namespace ShopHope
             try
             {
                 int selectedRow = billDataGridView.CurrentCell.RowIndex;
+                MessageBox.Show(selectedRow.ToString());
+                totalPrice -= double.Parse(billDataGridView.Rows[selectedRow].Cells[3].Value.ToString());
+                stockIdList.RemoveAt(selectedRow);
                 billDataGridView.Rows.RemoveAt(selectedRow);
+                quantityList.RemoveAt(selectedRow);
             }
             catch(Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -530,6 +584,29 @@ namespace ShopHope
             billDataGridView.Rows.Add(row);
             addBtn.Enabled = false;
             deleteBtn.Enabled = false;
+            for(int i = 0; i<stockIdList.Count; i++) {
+                MySqlConnection conn = Connection.getConnection();
+                try
+                {
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand("UPDATE shophope.stocks SET quantity = '"+(int.Parse(quantityList[i])-int.Parse(billDataGridView.Rows[i].Cells[1].Value.ToString())).ToString()+"' WHERE stockId = '"+stockIdList[i]+"'", conn);
+                    MySqlDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("error occured at stock manager weight combo"+ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            finishBtn.Enabled = false;
+            stockIdList.Clear();
+            quantityList.Clear();
         }
 
         private void newBillBtn_Click(object sender, EventArgs e)
@@ -538,6 +615,9 @@ namespace ShopHope
             billDataGridView.Refresh();
             addBtn.Enabled = true;
             deleteBtn.Enabled = true;
+            finishBtn.Enabled = true;
+            stockIdList.Clear();
+            quantityList.Clear();
         }
 
         private void returnWeightComboBox_SelectedIndexChanged(object sender, EventArgs e)
