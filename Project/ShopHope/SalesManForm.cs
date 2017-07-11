@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace ShopHope
 {
     public partial class SalesManForm : Form
@@ -60,6 +61,7 @@ namespace ShopHope
         {
 
         }
+        
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -78,6 +80,7 @@ namespace ShopHope
                     break;
             }
         }
+        
         public void fillStockIDComboBox()
         {
             MySqlConnection conn = Connection.getConnection();
@@ -129,6 +132,7 @@ namespace ShopHope
                 conn.Close();
             }
         }
+        
         public void fillReturnCatagoryComboBox()
         {
             MySqlConnection conn = Connection.getConnection();
