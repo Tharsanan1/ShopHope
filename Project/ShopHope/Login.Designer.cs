@@ -113,6 +113,7 @@
             // 
             this.signInBtn.BackColor = System.Drawing.Color.Blue;
             this.signInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.signInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signInBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.signInBtn.Location = new System.Drawing.Point(45, 152);
             this.signInBtn.Name = "signInBtn";
@@ -126,6 +127,7 @@
             // 
             this.signUpBtn.BackColor = System.Drawing.Color.Blue;
             this.signUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.signUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signUpBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.signUpBtn.Location = new System.Drawing.Point(190, 152);
             this.signUpBtn.Name = "signUpBtn";
@@ -138,6 +140,7 @@
             // forgotBtn
             // 
             this.forgotBtn.BackColor = System.Drawing.Color.Azure;
+            this.forgotBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forgotBtn.Location = new System.Drawing.Point(45, 210);
             this.forgotBtn.Name = "forgotBtn";
             this.forgotBtn.Size = new System.Drawing.Size(271, 26);
@@ -257,6 +260,7 @@
             // 
             this.signUpSecondBtn.BackColor = System.Drawing.Color.Blue;
             this.signUpSecondBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.signUpSecondBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signUpSecondBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.signUpSecondBtn.Location = new System.Drawing.Point(18, 328);
             this.signUpSecondBtn.Name = "signUpSecondBtn";

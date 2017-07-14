@@ -101,6 +101,9 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salaryDatagridView = new System.Windows.Forms.DataGridView();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leaveAvailabilityPanel = new System.Windows.Forms.Panel();
             this.checkLeaveBtn = new System.Windows.Forms.Button();
             this.dateComboBox = new System.Windows.Forms.ComboBox();
@@ -109,9 +112,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.privatePanel.SuspendLayout();
@@ -138,7 +138,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.BackColor = System.Drawing.Color.DarkBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.privatePanel);
             this.panel1.Controls.Add(this.panel4);
@@ -219,7 +219,8 @@
             // 
             this.nameLbl.AutoSize = true;
             this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLbl.Location = new System.Drawing.Point(30, 12);
+            this.nameLbl.ForeColor = System.Drawing.Color.FloralWhite;
+            this.nameLbl.Location = new System.Drawing.Point(40, 11);
             this.nameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLbl.Name = "nameLbl";
             this.nameLbl.Size = new System.Drawing.Size(157, 36);
@@ -358,7 +359,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Teal;
+            this.panel3.BackColor = System.Drawing.Color.DarkBlue;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.attandancePanel);
             this.panel3.Controls.Add(this.leavePanel);
@@ -377,6 +378,7 @@
             // 
             this.attandancePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.attandancePanel.Controls.Add(this.label23);
+            this.attandancePanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.attandancePanel.Location = new System.Drawing.Point(1, 262);
             this.attandancePanel.Name = "attandancePanel";
             this.attandancePanel.Size = new System.Drawing.Size(225, 47);
@@ -387,6 +389,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Gold;
             this.label23.Location = new System.Drawing.Point(58, 15);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(93, 20);
@@ -410,6 +413,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gold;
             this.label6.Location = new System.Drawing.Point(59, 12);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
@@ -434,6 +438,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gold;
             this.label3.Location = new System.Drawing.Point(59, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -459,6 +464,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gold;
             this.label4.Location = new System.Drawing.Point(58, 11);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
@@ -484,6 +490,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Gold;
             this.label5.Location = new System.Drawing.Point(58, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
@@ -509,6 +516,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
             this.label1.Location = new System.Drawing.Point(58, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -886,6 +894,23 @@
             this.salaryDatagridView.Size = new System.Drawing.Size(744, 509);
             this.salaryDatagridView.TabIndex = 0;
             // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "User ID";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Name";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 300;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Salary";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 300;
+            // 
             // leaveAvailabilityPanel
             // 
             this.leaveAvailabilityPanel.Controls.Add(this.checkLeaveBtn);
@@ -964,23 +989,6 @@
             this.label24.TabIndex = 0;
             this.label24.Text = "Name";
             // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "User ID";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Name";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 300;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Salary";
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 300;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1383, 741);
@@ -995,7 +1003,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1615, 863);
+            this.ClientSize = new System.Drawing.Size(1519, 806);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.leaveAvailabilityPanel);
             this.Controls.Add(this.salaryDatagridView);

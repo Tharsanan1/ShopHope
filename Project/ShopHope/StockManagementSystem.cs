@@ -33,7 +33,6 @@ namespace ShopHope
                     if(dataReader.GetString("offerDate").Length==0) {
                         continue;
                     }
-                    Console.WriteLine("date and datas:  "+dataReader.GetString("offerDate")+" "+ date.ToString());
                     if(int.Parse(dataReader.GetString("offerDate"))<int.Parse(date.ToString("yyyyMMdd"))) {
                         string id = dataReader.GetString("stockId"); 
                         MySqlConnection conn1 = Connection.getConnection();
@@ -46,7 +45,7 @@ namespace ShopHope
                             MySqlDataReader dataReader1 = command1.ExecuteReader();
                             while (dataReader1.Read())
                             {
-                                realPrice = dataReader1.GetString("offerPrice");
+                                realPrice = dataReader1.GetString("realPrice");
                                 realOfferPrice = dataReader1.GetString("price");
                             }
                         }

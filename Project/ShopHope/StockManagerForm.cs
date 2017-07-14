@@ -16,14 +16,15 @@ namespace ShopHope
         static List<StockManagerForm> stockManagerFormList = new List<StockManagerForm>();
         static List<string> formPointer = new List<string>();
         static object lockObject = new object();
+        
         private StockManagerForm(string name)
         {
             InitializeComponent();
-            newStockPanel.Visible = false;
             fillCatagoryComboBox();
             fillStockIDComboBox();
             nameLbl.Text = name;
         }
+        
         public static StockManagerForm getStockManagerForm(string name) {
             lock (lockObject) {
                 if (stockManagerFormList.Count == 0) 
@@ -46,10 +47,12 @@ namespace ShopHope
                 }
             }   
         }
+        
         private void StockManager_Load(object sender, EventArgs e)
         {
             
         }
+        
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -63,11 +66,32 @@ namespace ShopHope
                     e.Cancel = true;
                     break;
                 default:
+                    MySqlConnection conn = Connection.getConnection();
+                    try
+                    {
+
+                        conn.Open();
+                        MySqlCommand command = new MySqlCommand("UPDATE shophope.system SET isStocksUpdating = 'false' WHERE id = '1'", conn);
+                        MySqlDataReader dataReader = command.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("error occured at stock manager");
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                     Hide();
                     e.Cancel = true;
                     break;
             }
         }
+        
         public void fillStockIDComboBox()
         {
             MySqlConnection conn = Connection.getConnection();
@@ -90,6 +114,7 @@ namespace ShopHope
                 conn.Close();
             }
         }
+        
         public void fillCatagoryComboBox()
         {
             MySqlConnection conn = Connection.getConnection();
@@ -117,14 +142,17 @@ namespace ShopHope
                 conn.Close();
             }
         }
+        
         public void fillBrandComboBox()
         {
 
         }
+        
         public void fillNameComboBox()
         {
 
         }
+        
         public void fillWeightComboBox()
         {
 
@@ -325,6 +353,8 @@ namespace ShopHope
         {
             double oldPrice = 0;
             MySqlConnection conn = Connection.getConnection();
+            string offerDate = "";
+            bool flag = false;
             try
             {
                 conn.Open();
@@ -333,6 +363,8 @@ namespace ShopHope
                 while (dataReader.Read())
                 {
                     oldPrice = double.Parse(dataReader.GetString("price"));
+                    offerDate = dataReader.GetString("offerDate");
+                    flag = true;
                 }
                 conn.Close();
             }
@@ -343,6 +375,13 @@ namespace ShopHope
             finally
             {
                 conn.Close();
+            }
+            if(!flag) {
+                MessageBox.Show("Product Info Wrong");
+                return;
+            }
+            if(offerDate.Length>0) {
+                Mediator.notifyManager("Offer deleted for stock "+stockIDLbl.Text);
             }
             if (!oldPrice.ToString().Equals(priceTxt.Text)) {
                 MessageBox.Show("Notified");
@@ -357,7 +396,7 @@ namespace ShopHope
                 if (addQuantityTxt.Text.Length!=0) {
                     temp = (int.Parse(addQuantityTxt.Text) + int.Parse(quantityTxt.Text)).ToString();
                 }
-                MySqlCommand command = new MySqlCommand("UPDATE shophope.stocks SET price ='"+priceTxt.Text+"',quantity = '"+ temp + "',expirydate = '"+expieryTxt.Text+"',warningLevel='"+warningLevelTxt.Text+"' WHERE stockID = '"+stockIDLbl.Text+"'", conn);
+                MySqlCommand command = new MySqlCommand("UPDATE shophope.stocks SET price ='"+priceTxt.Text+ "', realPrice ='" + priceTxt.Text + "', quantity = '" + temp + "',expirydate = '"+expieryTxt.Text+"',warningLevel='"+warningLevelTxt.Text+"',offerDate = '' WHERE stockID = '"+stockIDLbl.Text+"'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
@@ -404,7 +443,7 @@ namespace ShopHope
                     conn.Close();
                     return;
                 }
-                command = new MySqlCommand("INSERT INTO shophope.stocks (catagory,brand,name,weight,price,quantity,warningLevel,expirydate) VALUES ('"+newCatagoryTxt.Text+"','"+newBrandTxt.Text+"','"+newNameTxt.Text+"','"+newWeightTxt.Text+"','"+newPriceTxt.Text+"','"+newQuantityTxt.Text+"','"+newWarningLevelTxt.Text+"','"+newExpiryTxt.Text+"')",conn);
+                command = new MySqlCommand("INSERT INTO shophope.stocks (catagory,brand,name,weight,price,quantity,warningLevel,expirydate,realPrice) VALUES ('"+newCatagoryTxt.Text+"','"+newBrandTxt.Text+"','"+newNameTxt.Text+"','"+newWeightTxt.Text+"','"+newPriceTxt.Text+"','"+newQuantityTxt.Text+"','"+newWarningLevelTxt.Text+"','"+newExpiryTxt.Text+"','"+newPriceTxt.Text+"')",conn);
                 conn.Close();
                 conn = Connection.getConnection();
                 conn.Open();
@@ -496,5 +535,54 @@ namespace ShopHope
 
         }
 
+        private void updatingBtn_Click(object sender, EventArgs e)
+        {
+            if(updatingBtn.Text == "Updating") {
+                updatingBtn.Text = "Set Idle";
+                MySqlConnection conn = Connection.getConnection();
+                try
+                {
+
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand("UPDATE shophope.system SET isStocksUpdating = 'true' WHERE id = '1'", conn);
+                    MySqlDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("error occured at stock manager");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            else {
+                updatingBtn.Text = "Updating";
+                MySqlConnection conn = Connection.getConnection();
+                try
+                {
+
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand("UPDATE shophope.system SET isStocksUpdating = 'false' WHERE id = '1'", conn);
+                    MySqlDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("error occured at stock manager");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

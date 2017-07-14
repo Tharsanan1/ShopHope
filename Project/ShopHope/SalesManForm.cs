@@ -32,8 +32,10 @@ namespace ShopHope
             stockIdList = new List<string>();
             quantityList = new List<string>();
         }
-        public static SalesManForm getsalesManform(string name) {
-            lock (lockObject) {
+        public static SalesManForm getsalesManform(string name)
+        {
+            lock (lockObject)
+            {
                 if (salesManFormList.Count == 0)
                 {
                     salesManFormList.Add(new SalesManForm(name.ToUpper()));
@@ -53,7 +55,7 @@ namespace ShopHope
                         return salesManFormList[salesManFormList.Count - 1];
                     }
                 }
-            }        
+            }
         }
 
         private void SalesManForm_Load(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace ShopHope
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error occured at stock manager: "+ex.Message);
+                Console.WriteLine("error occured at stock manager: " + ex.Message);
             }
             finally
             {
@@ -174,7 +176,7 @@ namespace ShopHope
         {
 
         }
-        
+
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
@@ -187,28 +189,30 @@ namespace ShopHope
             fillStockIDComboBox();
         }
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
 
-            
+
+
             MySqlConnection conn = Connection.getConnection();
             try
             {
                 conn.Open();
                 MySqlCommand command;
                 command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory = '" + catagoryComboBox.Text + "' and brand = '" + brandComboBox.Text + "' and name = '" + nameComboBox.Text + "' and weight = '" + weightComboBox.Text + "'", conn);
-                
+
                 MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    if(stockIdList.Contains(dataReader.GetString("stockId"))) {
+                    if (stockIdList.Contains(dataReader.GetString("stockId")))
+                    {
                         MessageBox.Show("Already this kind of product you can edit there!");
                         return;
                     }
-                    if(numberOfStocksForPurchase.Text.Length==0) {
+                    if (numberOfStocksForPurchase.Text.Length == 0)
+                    {
                         numberOfStocksForPurchase.Text = "1";
                     }
                     string s = dataReader.GetString("price");
@@ -217,10 +221,11 @@ namespace ShopHope
                     row.Cells[1].Value = numberOfStocksForPurchase.Text;
                     row.Cells[2].Value = s;
                     string temp = s;
-                    if(numberOfStocksForPurchase.Text.Length>0) {
+                    if (numberOfStocksForPurchase.Text.Length > 0)
+                    {
                         temp = (double.Parse(s) * double.Parse(numberOfStocksForPurchase.Text)).ToString();
                     }
-                    totalPrice+=double.Parse(temp);
+                    totalPrice += double.Parse(temp);
                     row.Cells[3].Value = temp;
                     billDataGridView.Rows.Add(row);
                     catagoryComboBox.Text = "";
@@ -230,7 +235,7 @@ namespace ShopHope
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error occured at stock manager "+ex.Message);
+                Console.WriteLine("error occured at stock manager " + ex.Message);
             }
             finally
             {
@@ -243,15 +248,16 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command;
                 if (stockIDComboBox.Text.Length > 0)
                 {
                     command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE stockID = '" + stockIDComboBox.Text + "'", conn);
                 }
-                else {
-                    command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory = '"+catagoryComboBox.Text+"' and brand = '"+brandComboBox.Text+"' and name = '"+nameComboBox.Text+"' and weight = '"+weightComboBox.Text+"'", conn);
+                else
+                {
+                    command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory = '" + catagoryComboBox.Text + "' and brand = '" + brandComboBox.Text + "' and name = '" + nameComboBox.Text + "' and weight = '" + weightComboBox.Text + "'", conn);
                 }
                 MySqlDataReader dataReader = command.ExecuteReader();
                 bool flag = false;
@@ -260,17 +266,43 @@ namespace ShopHope
                     MessageBox.Show("Available stock quantity is " + dataReader.GetString("quantity"));
                     flag = true;
                 }
-                if(!flag) {
+                if (!flag)
+                {
                     MessageBox.Show("No stocks available.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error occured at stock manager "+ex.Message);
+                Console.WriteLine("error occured at stock manager " + ex.Message);
             }
             finally
             {
                 conn.Close();
+            }
+            conn = Connection.getConnection();
+            string updatingString = "";
+            try
+            {
+
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.system WHERE id = '1'", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    updatingString = dataReader.GetString("isStocksUpdating");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error occured at stock manager");
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (updatingString.Equals("true"))
+            {
+                MessageBox.Show("Stocks are in updating mode.");
             }
         }
 
@@ -285,7 +317,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + catagoryComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -302,7 +334,7 @@ namespace ShopHope
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error occured at stock manager: "+ex.Message);
+                Console.WriteLine("error occured at stock manager: " + ex.Message);
             }
             finally
             {
@@ -320,7 +352,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + catagoryComboBox.Text + "' and brand ='" + brandComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -337,7 +369,7 @@ namespace ShopHope
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error occured at stock manager:  "+ex.Message);
+                Console.WriteLine("error occured at stock manager:  " + ex.Message);
             }
             finally
             {
@@ -386,7 +418,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE stockID = '" + stockIDComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -442,13 +474,15 @@ namespace ShopHope
 
         private void returnBtn_Click(object sender, EventArgs e)
         {
-           
-            if (returnPanel.Visible==false) {
+
+            if (returnPanel.Visible == false)
+            {
                 returnPanel.Visible = true;
             }
-            else {
+            else
+            {
                 returnPanel.Visible = false;
-                Mediator.notifyManager(returnNameComboBox.Text+" has returned.");
+                Mediator.notifyManager(returnNameComboBox.Text + " has returned.");
             }
         }
 
@@ -463,7 +497,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + returnCatagoryComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -492,15 +526,15 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + returnCatagoryComboBox.Text + "' and brand ='" + returnBrandComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
                     string s = dataReader.GetString("name");
-                        returnNameComboBox.Items.Add(s);
-                    
+                    returnNameComboBox.Items.Add(s);
+
                 }
             }
             catch (Exception ex)
@@ -520,7 +554,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + returnCatagoryComboBox.Text + "' and brand ='" + returnBrandComboBox.Text + "' and name = '" + returnNameComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -528,7 +562,7 @@ namespace ShopHope
                 {
 
                     string s = dataReader.GetString("weight");
-                        returnWeightComboBox.Items.Add(s);
+                    returnWeightComboBox.Items.Add(s);
                 }
             }
             catch (Exception ex)
@@ -543,13 +577,13 @@ namespace ShopHope
 
         private void returnQuantityTxt_TextChanged(object sender, EventArgs e)
         {
-            foreach (char c in numberOfStocksForPurchase.Text)
+            foreach (char c in returnQuantityTxt.Text)
             {
                 if (!char.IsDigit(c))
                 {
-                    numberOfStocksForPurchase.Text = numberOfStocksForPurchase.Text.Substring(0, numberOfStocksForPurchase.Text.Length - 1);
-                    numberOfStocksForPurchase.SelectionStart = numberOfStocksForPurchase.Text.Length;
-                    
+                    returnQuantityTxt.Text = returnQuantityTxt.Text.Substring(0, returnQuantityTxt.Text.Length - 1);
+                    returnQuantityTxt.SelectionStart = returnQuantityTxt.Text.Length;
+
                 }
 
             }
@@ -571,7 +605,8 @@ namespace ShopHope
                 billDataGridView.Rows.RemoveAt(selectedRow);
                 quantityList.RemoveAt(selectedRow);
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
         }
@@ -584,12 +619,13 @@ namespace ShopHope
             billDataGridView.Rows.Add(row);
             addBtn.Enabled = false;
             deleteBtn.Enabled = false;
-            for(int i = 0; i<stockIdList.Count; i++) {
+            for (int i = 0; i < stockIdList.Count; i++)
+            {
                 MySqlConnection conn = Connection.getConnection();
                 try
                 {
                     conn.Open();
-                    MySqlCommand command = new MySqlCommand("UPDATE shophope.stocks SET quantity = '"+(int.Parse(quantityList[i])-int.Parse(billDataGridView.Rows[i].Cells[1].Value.ToString())).ToString()+"' WHERE stockId = '"+stockIdList[i]+"'", conn);
+                    MySqlCommand command = new MySqlCommand("UPDATE shophope.stocks SET quantity = '" + (int.Parse(quantityList[i]) - int.Parse(billDataGridView.Rows[i].Cells[1].Value.ToString())).ToString() + "' WHERE stockId = '" + stockIdList[i] + "'", conn);
                     MySqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
@@ -597,7 +633,7 @@ namespace ShopHope
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("error occured at stock manager weight combo"+ex.Message);
+                    Console.WriteLine("error occured at stock manager weight combo" + ex.Message);
                 }
                 finally
                 {
@@ -625,7 +661,7 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-                
+
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + returnCatagoryComboBox.Text + "' and brand ='" + returnBrandComboBox.Text + "' and name = '" + returnNameComboBox.Text + "' and weight = '" + returnWeightComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -638,16 +674,45 @@ namespace ShopHope
             {
                 Console.WriteLine("error occured at stock manager weight combo");
             }
-            finally {
+            finally
+            {
                 conn.Close();
             }
         }
 
         private void returnedItemsFinishBtn_Click(object sender, EventArgs e)
         {
-            Mediator.notifyManager("/stock " + returnedId + " returned. quantity= "+returnQuantityTxt.Text);
+            MySqlConnection conn = Connection.getConnection();
+            bool flag = false;
+            try
+            {
+
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + returnCatagoryComboBox.Text + "' and brand ='" + returnBrandComboBox.Text + "' and name = '" + returnNameComboBox.Text + "' and weight = '" + returnWeightComboBox.Text + "'", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    returnedId = dataReader.GetString("stockID");
+                    flag = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error occured at stock manager weight combo");
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (returnQuantityTxt.Text.Length > 0 && flag)
+            {
+                Mediator.notifyManager("/stock " + returnedId + " returned. quantity= " + returnQuantityTxt.Text);
+                MessageBox.Show("Notified");
+            }
+            else {
+                MessageBox.Show("Wrong Product");
+            }
         }
     }
-
 }
 

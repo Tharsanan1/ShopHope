@@ -10,7 +10,7 @@ namespace ShopHope
 {
     class Connection
     {
-        static string ConnString = "server = 127.0.0.1; port = 3308; DATABASE = shophope; UID = root; PASSWORD = Thars@123;";
+        static string ConnString = "server = 192.168.0.101; port = 3308; DATABASE = shophope; UID = root; PASSWORD = 1234;";
         static MySqlConnection conn = new MySqlConnection(ConnString);
         static MySqlConnection conn1 = new MySqlConnection(ConnString);
         static MySqlDataAdapter dataAdapter = new MySqlDataAdapter();

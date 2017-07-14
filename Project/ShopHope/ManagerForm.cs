@@ -28,6 +28,8 @@ namespace ShopHope
         private ManagerForm()
         {
             InitializeComponent();
+            Location = new Point(0, 0);
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             limit = 5;
             lockObjectInstant = new object();
             timerCountDown = new System.Timers.Timer();
@@ -739,6 +741,7 @@ namespace ShopHope
             if(!price.Equals(priceTxt.Text)) {
                 string oldPrice = ""; 
                 string dateTime = dateTimePicker1.Value.ToString("yyyyMMdd");
+                string offerDate = "";
                 MySqlConnection conn = Connection.getConnection();
                 try
                 {
@@ -748,8 +751,9 @@ namespace ShopHope
                     while (dataReader.Read())
                     {
                         oldPrice = dataReader.GetString("price");
+                        offerDate = dataReader.GetString("offerDate");
                     }
-                    MessageBox.Show("Offer Created...");
+                    //MessageBox.Show("Offer Created...");
                 }
                 catch (Exception ex)
                 {
@@ -758,6 +762,10 @@ namespace ShopHope
                 finally
                 {
                     conn.Close();
+                }
+                if (offerDate.Length > 0) {
+                    MessageBox.Show("Already an offer created");
+                    return;
                 }
                 conn = Connection.getConnection();
                 try
@@ -1182,12 +1190,11 @@ namespace ShopHope
 
         private void ManagerForm_Activated(object sender, EventArgs e)
         {
-            ////countDown = 0;
-            ////if (!timerCountDown.Enabled)
-            ////{
-            ////    timerCountDown.Start();
-            ////}
-            ////MessageBox.Show("activated");
+            countDown = 0;
+            if (!timerCountDown.Enabled)
+            {
+                timerCountDown.Start();
+            }
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -1261,9 +1268,30 @@ namespace ShopHope
             countDown = 0;
             if(button1.Text == "Stop Auto Logout") {
                 limit = 10000;
-                button1.Text = "Start Auto Logout";
+                button1.Text = "Set 30 sec";
             }
-            else {
+            else if (button1.Text == "Set 30 sec")
+            {
+                button1.Text = "Set 1 min";
+                limit = 30;
+            }
+            else if (button1.Text == "Set 1 min")
+            {
+                button1.Text = "Set 2 min";
+                limit = 60;
+            }
+            else if (button1.Text == "Set 2 min")
+            {
+                button1.Text = "Set 5 min";
+                limit = 120;
+            }
+            else if (button1.Text == "Set 5 min")
+            {
+                limit = 300;
+                button1.Text = "Set 5 sec";
+            }
+            else
+            {
                 button1.Text = "Stop Auto Logout";
                 limit = 5;
             }
