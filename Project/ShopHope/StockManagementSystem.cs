@@ -11,9 +11,7 @@ namespace ShopHope
     {
         static System.Timers.Timer timer;
         
-
-        private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
+        private static void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e) {
             
         }
         public static void doDailyWork() {
@@ -63,9 +61,8 @@ namespace ShopHope
                             conn1.Open();
                             MySqlCommand command1 = new MySqlCommand("UPDATE shophope.stocks SET price = '"+realPrice+"', offerDate = '' WHERE stockId = '" + id + "'", conn1);
                             MySqlDataReader dataReader1 = command1.ExecuteReader();
-                            while (dataReader1.Read())
-                            {
-                                
+                            while (dataReader1.Read()) {
+                              
                             }
                         }
                         catch (Exception ex)
