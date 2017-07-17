@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+           
             base.Dispose(disposing);
         }
 
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockManagerForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.nameLbl = new System.Windows.Forms.Label();
@@ -145,6 +147,7 @@
             this.label5.Size = new System.Drawing.Size(45, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Name";
+            
             // 
             // label6
             // 
