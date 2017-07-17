@@ -14,7 +14,7 @@ namespace ShopHope
         string post;
         long phoneNo;
         int age;
-        public Employee(string name, string id, string mail, long phoneNo, int age , string password , string post) {
+        public Employee(string name, string id, string mail, long phoneNo, int age , string password , string post){
             this.name = name;
             this.id = id;
             this.mail = mail;
