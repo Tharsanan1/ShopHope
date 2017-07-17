@@ -172,9 +172,7 @@ namespace ShopHope
                         row.Cells[2].Value = dataReader.GetString("todayOverTime");
                         row.Cells[3].Value = dataReader.GetString("presence");
                         attandanceDataGridView.Rows.Add(row);
-
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -278,7 +276,6 @@ namespace ShopHope
 
         private void profilePanel_MouseClick(object sender, MouseEventArgs e)
         {
-
             performResetCountDown();
         }
 
@@ -412,19 +409,11 @@ namespace ShopHope
             }
         }
 
-
-
-
-
         private void notificationPanel_Paint(object sender, PaintEventArgs e)
         {
             
         }
-
-
-
-
-
+        
         private void notificationPanel_MouseClick(object sender, MouseEventArgs e)
         {
             performResetCountDown();
@@ -546,13 +535,6 @@ namespace ShopHope
             }
         }
 
-
-
-
-
-
-
-
         public string getId(string s)
         {
             string temp = "";
@@ -620,7 +602,6 @@ namespace ShopHope
             MySqlConnection conn = Connection.getConnection();
             try
             {
-
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("SELECT * FROM shophope.stocks WHERE catagory ='" + catagoryComboBox.Text + "'", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -881,10 +862,9 @@ namespace ShopHope
                         row.Cells[5].Value = dataReader.GetString("price");
                         row.Cells[6].Value = dataReader.GetString("quantity");
                         viewStockDataGridView.Rows.Add(row);
-
                     }
-
                 }
+                
                 catch (Exception ex)
                 {
                     Console.WriteLine("error occured at stock manager weight combo " + ex.Message);
@@ -925,7 +905,6 @@ namespace ShopHope
             {
                 employeeDataGridView.Rows.Clear();
                 employeeDataGridView.Visible = false;
-
             }
             else
             {
@@ -947,9 +926,7 @@ namespace ShopHope
                         row.Cells[5].Value = dataReader.GetString("phoneNum");
                         row.Cells[6].Value = dataReader.GetString("post");
                         employeeDataGridView.Rows.Add(row);
-
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -1024,9 +1001,7 @@ namespace ShopHope
                         row.Cells[1].Value = dataReader.GetString("userName");
                         row.Cells[2].Value = dataReader.GetString("salary");
                         salaryDatagridView.Rows.Add(row);
-
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -1059,7 +1034,6 @@ namespace ShopHope
         private void dateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             checkLeaveBtn.Enabled = true;
-
         }
 
         private void checkLeaveBtn_Click(object sender, EventArgs e)
@@ -1081,9 +1055,7 @@ namespace ShopHope
                     if(int.Parse(dataReader.GetString("priority"))<priority) {
                         flag = true;
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -1098,8 +1070,7 @@ namespace ShopHope
                     DialogResult dialog = MessageBox.Show(person+" claimed that day leave. Do you want to interchange leave?","",MessageBoxButtons.YesNo);
                     if(dialog == DialogResult.Yes) {
                         changePerson(priority,dayIndex);
-                    }
-                    
+                    }   
                 }
                 else {
                     changePerson(priority, dayIndex);
@@ -1121,7 +1092,6 @@ namespace ShopHope
                 {
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -1160,16 +1130,12 @@ namespace ShopHope
             showLeaveAvailabilityPanel();
             performResetCountDown();
         }
-
-
-
-
+        
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
-
             // Confirm user wants to close
             switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
             {
