@@ -21,7 +21,6 @@ namespace ShopHope
                 {
                     date = dataReader.GetString("date");
                 }
-
             }
             catch (Exception ex)
             {
@@ -44,11 +43,9 @@ namespace ShopHope
                     conn.Open();
                     MySqlCommand command = new MySqlCommand("UPDATE shophope.system SET date = '"+ dateTime.ToString("yyyyMMdd") + "' WHERE id = 1", conn);
                     MySqlDataReader dataReader = command.ExecuteReader();
-                    while (dataReader.Read())
-                    {
+                    while (dataReader.Read()) {
                         date = dataReader.GetString("date");
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -81,9 +78,10 @@ namespace ShopHope
                     if (dataReader.GetString("presence").Equals("t")) {
                         attandanceList.Add(true);
                     }
-                    else { attandanceList.Add(false); }
+                    else { 
+                        attandanceList.Add(false); 
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -93,19 +91,15 @@ namespace ShopHope
             {
                 conn.Close();
             }
-            for (int i = 0; i < attandanceList.Count; i++)
-            {
-                if (attandanceList[i])
-                {
+            for (int i = 0; i < attandanceList.Count; i++) {
+                if (attandanceList[i]) {
                     try
                     {
-                
                         conn = Connection.getConnection();
                         conn.Open();
                         MySqlCommand command = new MySqlCommand("UPDATE shophope.employeetable SET monthlyAttandance = '" + (attandanceCountList[i]+1).ToString() + "', overTime = '"+overTimeList[i].ToString()+"',todayOverTime = '0', presence = 'f' WHERE userId = '"+userIdList[i].ToString()+"'", conn);
                         MySqlDataReader dataReader = command.ExecuteReader();
-                        while (dataReader.Read())
-                        {
+                        while (dataReader.Read()) {
                             
                         }
                     }
@@ -121,13 +115,11 @@ namespace ShopHope
                 else {
                     try
                     {
-
                         conn = Connection.getConnection();
                         conn.Open();
                         MySqlCommand command = new MySqlCommand("UPDATE shophope.employeetable SET leavesPerMonth = '" + (int.Parse(leavesCountList[i]) + 1).ToString() + "',todayOverTime = '0' WHERE userId = '" + userIdList[i].ToString() + "'", conn);
                         MySqlDataReader dataReader = command.ExecuteReader();
-                        while (dataReader.Read())
-                        {
+                        while (dataReader.Read()) {
 
                         }
                     }
@@ -140,8 +132,7 @@ namespace ShopHope
                         conn.Close();
                     }
                 }
-            }
-            
+            }      
         }
         public static void doMonthlyWork() {
             MySqlConnection conn = Connection.getConnection();
@@ -158,7 +149,6 @@ namespace ShopHope
                     salaryList.Add(((int.Parse(dataReader.GetString("monthlyAttandance"))*500)+(int.Parse(dataReader.GetString("overTime"))*300)).ToString());
                     idList.Add(dataReader.GetString("userId"));
                 }
-
             }
             catch (Exception ex)
             {
@@ -174,11 +164,9 @@ namespace ShopHope
                     conn.Open();
                     MySqlCommand command = new MySqlCommand("UPDATE shophope.employeetable SET leavesPerMonth = '0' , salary = '"+salaryList[i]+"' , monthlyAttandance = '0' , overTime = '0' WHERE userId = '"+idList[i]+"'", conn);
                     MySqlDataReader dataReader = command.ExecuteReader();
-                    while (dataReader.Read())
-                    {
+                    while (dataReader.Read()) {
                         
                     }
-
                 }
                 catch (Exception ex)
                 {
